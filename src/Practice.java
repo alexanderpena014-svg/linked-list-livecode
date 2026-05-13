@@ -25,10 +25,12 @@ public class Practice {
         ListNode hello = new ListNode();
         hello.data = 'x';
         extra.next = hello;
-        printList(coolNode);
+        //printList(coolNode);
 
-        int xCount = countX(coolNode);
-        System.out.println(xCount);
+        ListNode newHead = removeAt(coolNode, 2);
+        printList(newHead);
+        //int xCount = countX(coolNode);
+        //System.out.println(xCount);
 
         //System.out.println(extra.data);
         
@@ -68,5 +70,26 @@ public class Practice {
         }
 
         return count;
+    }
+
+    // remove the node at removeIndex, and return the head of the list
+    // Ex
+    // e -> t -> k -> y
+    // removeIndex 2
+    // e -> t -> y
+
+    public static ListNode removeAt(ListNode head, int removeIndex) {
+       if(removeIndex == 0) {
+            return head.next;
+       }
+       
+        ListNode current = head;
+
+        for(int i = 0; i < removeIndex - 1; i++) {
+            current = current.next;
+        }
+        //removes
+        current.next = current.next.next;
+        return head;
     }
 }
